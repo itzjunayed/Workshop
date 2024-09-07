@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Blog List</title>
+
+    <!-- Add some basic styles for the table -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a.btn {
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+        }
+
+        a.btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tbody tr {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            table tbody tr td {
+                display: block;
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            table tbody tr td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 10px;
+                font-weight: bold;
+                text-align: left;
+            }
+
+            table tbody tr td:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Blog List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Title">Understanding JavaScript</td>
+                <td data-label="Description">A beginner's guide to JavaScript concepts.</td>
+                <td data-label="Action"><a href="/blogs/javascript" class="btn">View Blog</a></td>
+            </tr>
+            <tr>
+                <td data-label="Title">Learning Python</td>
+                <td data-label="Description">Comprehensive tutorial for Python programming.</td>
+                <td data-label="Action"><a href="/blogs/python" class="btn">View Blog</a></td>
+            </tr>
+            <tr>
+                <td data-label="Title">Exploring CSS</td>
+                <td data-label="Description">Tips and tricks for mastering CSS layouts.</td>
+                <td data-label="Action"><a href="/blogs/css" class="btn">View Blog</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

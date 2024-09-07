@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Create Blog</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .blog-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-form input,
+        .blog-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .blog-form input:invalid,
+        .blog-form textarea:invalid {
+            border-color: red;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create New Blog</h1>
+
+        <!-- Blog Creation Form -->
+        <form id="create-blog-form" class="blog-form" novalidate>
+            <input type="text" id="blog-title" placeholder="Enter blog title" required>
+            <textarea id="blog-description" rows="5" placeholder="Enter blog description" required></textarea>
+            <button type="submit" class="btn" id="submit-btn">Create Blog</button>
+        </form>
+
+        <!-- Success and Error Messages -->
+        <div class="success-message" id="success-message">Blog created successfully!</div>
+        <div class="error-message" id="error-message">Please fill in both the title and description fields.</div>
+    </div>
+
+    <script>
+        // Get form elements
+        const blogForm = document.getElementById('create-blog-form');
+        const blogTitle = document.getElementById('blog-title');
+        const blogDescription = document.getElementById('blog-description');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+
+        // Handle form submission
+        blogForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+
+            const title = blogTitle.value.trim();
+            const description = blogDescription.value.trim();
+
+            // Check if title and description are filled
+            if (title === "" || description === "") {
+                errorMessage.style.display = 'block';  // Show error message
+                successMessage.style.display = 'none'; // Hide success message
+            } else {
+                // Simulating successful blog creation
+                successMessage.style.display = 'block'; // Show success message
+                errorMessage.style.display = 'none';   // Hide error message
+
+                // Reset the form after submission
+                blogTitle.value = '';
+                blogDescription.value = '';
+            }
+        });
+
+        // Real-time validation feedback
+        blogTitle.addEventListener('input', () => {
+            if (blogTitle.value.trim() === "") {
+                blogTitle.style.borderColor = 'red';
+            } else {
+                blogTitle.style.borderColor = '#ddd';
+            }
+        });
+
+        blogDescription.addEventListener('input', () => {
+            if (blogDescription.value.trim() === "") {
+                blogDescription.style.borderColor = 'red';
+            } else {
+                blogDescription.style.borderColor = '#ddd';
+            }
+        });
+    </script>
+</body>
+
+</html>
